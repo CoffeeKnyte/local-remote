@@ -1,0 +1,20 @@
+[Unit]
+Description=Zenstorage Primer - Service
+Requires=zenstorage.service
+After=zenstorage.service
+
+[Service]
+User=seed
+Group=seed
+Type=oneshot
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/rclone rc vfs/refresh \
+  recursive=false \
+  --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36' \
+  --config=/home/seed/.config/rclone/rclone.conf \
+  --timeout=1h \
+  -vvv \
+  --rc-addr=localhost:5576
+
+[Install]
+WantedBy=default.target
