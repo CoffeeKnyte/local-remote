@@ -1,0 +1,32 @@
+# /etc/systemd/system/zenremote_primer.service
+#########################################################################
+# Title:         Cloudbox: Rclone VFS Primer - Service                  #
+# Author(s):     EnorMOZ                                                #
+# URL:           https://github.com/cloudbox/cloudbox                   #
+# --                                                                    #
+#         Part of the Cloudbox project: https://cloudbox.works          #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+
+[Unit]
+Description=Rclone VFS Primer - Service
+Requires=zenremote.service
+After=zenremote.service
+
+[Service]
+User=seed
+Group=seed
+Type=oneshot
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/rclone rc vfs/refresh \
+  dir=Media \
+  recursive=true \
+  --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36' \
+  --config /home/seed/.config/rclone/rclone.conf \
+  --timeout=1h \
+  -vvv \
+  --rc-addr=localhost:5577
+
+[Install]
+WantedBy=default.target
