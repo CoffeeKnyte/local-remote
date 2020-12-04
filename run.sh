@@ -23,3 +23,4 @@ sleep 10
 sudo systemctl restart zenstorage.service && sudo systemctl restart zenstorage_primer.service && sudo systemctl restart zenremote.service && sudo systemctl restart zenremote_primer.service && sudo systemctl restart mergerfs.service
 
 #restart all dockers
+docker restart $(docker ps -q)
