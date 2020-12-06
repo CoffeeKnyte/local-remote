@@ -1,7 +1,7 @@
 #bin/bash
 
-sudo mkdir -p /mnt/zenstorage
-sudo mkdir -p /mnt/zenremote
+mkdir -p /mnt/zenstorage
+mkdir -p /mnt/zenremote
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenremote.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenremote_primer.service -P /etc/systemd/system/
