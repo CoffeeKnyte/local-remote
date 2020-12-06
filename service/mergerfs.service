@@ -12,6 +12,10 @@
 [Unit]
 Description=MergerFS Mount
 After=network-online.target
+Requires=zenstorage.service
+After=zenstorage.service
+Requires=zenremote.service
+After=zenremote.service
 
 [Service]
 Type=forking
