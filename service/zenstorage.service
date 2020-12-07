@@ -20,7 +20,10 @@ ExecStart=/usr/bin/rclone mount \
   --buffer-size=64M \
   --dir-cache-time=1h \
   --timeout=10m \
+  --tpslimit=10 \
+  --tpslimit-burst=100 \
   --umask=002 \
+  --async-read=false \
   --syslog \
   -v \
   zenstorage: /mnt/zenstorage
