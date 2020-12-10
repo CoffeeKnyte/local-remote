@@ -16,15 +16,12 @@ ExecStart=/usr/bin/rclone mount \
   --vfs-read-ahead=128M \
   --vfs-read-chunk-size=64M \
   --vfs-read-chunk-size-limit=2G \
-  --vfs-cache-mode=full \
-  --vfs-cache-max-age=24h \
-  --vfs-cache-max-size=100G \
   --fast-list \
   --buffer-size=64M \
+  --drive-chunk-size=64M \
   --dir-cache-time=1h \
   --timeout=10m \
-  --tpslimit=10 \
-  --tpslimit-burst=100 \
+  --tpslimit=180 \
   --umask=002 \
   --async-read=false \
   --syslog \
