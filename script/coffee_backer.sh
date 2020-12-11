@@ -19,3 +19,8 @@ cp "/opt/plex/Library/Application Support/Plex Media Server/Preferences.xml" "/o
 
 cp "/opt/plex2/Library/Application Support/Plex Media Server/plexmediaserver.pid" "/opt/scripts/backup/plex2/plexmediaserver.pid"
 cp "/opt/plex2/Library/Application Support/Plex Media Server/Preferences.xml" "/opt/scripts/backup/plex2/Preferences.xml"
+
+sleep 5
+
+docker start plex
+docker start plex2
