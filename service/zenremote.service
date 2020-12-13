@@ -36,6 +36,7 @@ ExecStart=/usr/bin/rclone mount \
   --drive-chunk-size=64M \
   --umask=002 \
   --syslog \
+  --exclude 'movies/10s/**' \
   --exclude 'movies/20s/**' \
   --exclude 'movies/4k-dv/**' \
   --exclude 'movies/4k/**' \
