@@ -1,4 +1,35 @@
 #!/bin/bash
+set -x #echo on
+
+#####################################################
+#PLEX VAR
+#####################################################
+
+#plexdocker=$1
+plexdocker="plex"
+importdb="/mnt/local/Backups/keepdb/coffee_base/copyover3.db"
+
+#make a bunch of copies of the db in case we mess up
+docker stop ${plexdocker}
+sleep 5
+cp "/opt/${plexdocker}/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db" "/mnt/local/Backups/keepdb/coffee_base/pre-copyover-${plexdocker}.db"
+cd "/opt/${plexdocker}/Library/Application Support/Plex Media Server/Plug-in Support/Databases/"
+mv "com.plexapp.plugins.library.db" "keep.db"
+cp "${importdb}" "/opt/${plexdocker}/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db"
+
+
+#clear com.plexapp.plugins.library.db
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_item_views;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_item_settings;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM statistics_bandwidth;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM statistics_media;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM statistics_resources;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM accounts;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM devices;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM play_queue_generators;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_item_accounts;"
+sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_items WHERE metadata_type = 15;"
+sqlite3 com.plexapp.plugins.library.db "DROP INDEX index_title_sort_naturalsort;"
 
 #save from keep.db
 echo ".dump metadata_item_settings" | sqlite3 keep.db | grep -v TABLE | grep -v INDEX > metadata_item_settings.sql
@@ -38,34 +69,29 @@ do
   ((l=l+1))
 done
 
-sleep 10
-
-docker stop plex
-sleep 10
-cp com.plexapp.plugins.library.db com.plexapp.plugins.library.db.jon
-#clear com.plexapp.plugins.library.db
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_item_views;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_item_settings;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM statistics_bandwidth;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM statistics_media;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM statistics_resources;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM accounts;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM devices;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM play_queue_generators;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_item_accounts;"
-sqlite3 com.plexapp.plugins.library.db "DELETE FROM metadata_items WHERE metadata_type = 15;"
-sqlite3 com.plexapp.plugins.library.db "DROP INDEX index_title_sort_naturalsort;"
+sleep 3
 
 #replace with data from keep.db
 cat metadata_item_settings.sql | sqlite3 com.plexapp.plugins.library.db
 cat accounts.sql | sqlite3 com.plexapp.plugins.library.db
-#cat devices.sql | sqlite3 com.plexapp.plugins.library.db
+cat devices.sql | sqlite3 com.plexapp.plugins.library.db
 cat 1playqueue.sql | sqlite3 com.plexapp.plugins.library.db
 cat 1metadata_item_accounts.sql | sqlite3 com.plexapp.plugins.library.db
 cat 1metadata_list.sql | sqlite3 com.plexapp.plugins.library.db
 
 echo "New database imported. Previous accounts and watch data has been kept"
-sleep 5
-docker start plex
+sleep 3
+
 rm db.txt
 rm lastrow.txt
+rm metadata_item_settings.sql 
+rm accounts.sql
+rm devices.sql
+rm 1playqueue.sql
+rm 1metadata_item_accounts.sql
+rm 1metadata_list.sql
+
+#make another copy of the db from after the import
+cp "/opt/${plexdocker}/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db" "/mnt/local/Backups/keepdb/coffee_base/post-copyover-${plexdocker}.db"
+
+docker start ${plexdocker}
