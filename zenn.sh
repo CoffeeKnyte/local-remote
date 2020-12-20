@@ -1,5 +1,5 @@
 #bin/bash
-
+set -x
 mkdir -p /mnt/unionfs
 
 sudo systemctl disable mergerfs.service
