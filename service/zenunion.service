@@ -1,0 +1,37 @@
+[Unit]
+Description=ZenUnion Mount
+After=network-online.target
+
+[Service]
+User=seed
+Group=seed
+Type=notify
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/rclone mount \
+  --config=/home/seed/.config/rclone/rclone.conf \
+  --allow-other \
+  --allow-non-empty \
+  --rc \
+  --rc-addr=localhost:5576 \
+  --vfs-read-ahead=128M \
+  --vfs-read-chunk-size=64M \
+  --vfs-read-chunk-size-limit=2G \
+  --fast-list \
+  --buffer-size=64M \
+  --drive-chunk-size=64M \
+  --dir-cache-time=1h \
+  --timeout=10m \
+  --tpslimit=300 \
+  --umask=002 \
+  --async-read=false \
+  --syslog \
+  -v \
+  zenunion: /mnt/unionfs
+ExecStop=/bin/fusermount -uz /mnt/unionfs
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=default.target
