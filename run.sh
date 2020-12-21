@@ -15,8 +15,6 @@ sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/servic
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenremote_primer.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenremote_primer.timer -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
-sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage_primer.service -P /etc/systemd/system/
-sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage_primer.timer -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
 
 sudo systemctl daemon-reload
