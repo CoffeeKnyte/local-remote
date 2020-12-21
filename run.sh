@@ -3,6 +3,8 @@
 mkdir -p /mnt/zenstorage
 mkdir -p /mnt/zenremote
 
+sudo systemctl disable zenunion.service
+sudo systemctl stop zenunion.service
 sudo rm /etc/systemd/system/zenunion.service
 sudo rm /etc/systemd/system/zenremote.service
 sudo rm /etc/systemd/system/zenremote_primer.service
