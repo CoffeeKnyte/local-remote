@@ -11,20 +11,26 @@ ExecStart=/usr/bin/rclone mount \
   --config=/home/seed/.config/rclone/rclone.conf \
   --allow-other \
   --allow-non-empty \
+  --async-read=true \
+  --s3-chunk-size=256M \
   --rc \
   --rc-addr=localhost:5576 \
-  --vfs-read-ahead=128M \
-  --vfs-read-chunk-size=64M \
-  --vfs-read-chunk-size-limit=2G \
-  --fast-list \
   --buffer-size=64M \
-  --drive-chunk-size=64M \
-  --dir-cache-time=1h \
+  --s3-disable-http2 \
+  --attr-timeout=8760h \
+  --dir-cache-time=8760h \
   --timeout=10m \
-  --tpslimit=300 \
+  --tpslimit=1000 \
   --umask=002 \
-  --async-read=false \
   --syslog \
+  --exclude 'zd-audiobooks-non-english/**' \
+  --exclude 'zd-comics/**' \
+  --exclude 'zd-ebooks/**' \
+  --exclude 'zd-ebooks-non-english/**' \
+  --exclude 'zd-magazines/**' \
+  --exclude 'zd-music0/**' \
+  --exclude 'zd-software/**' \
+  --exclude 'zd-test/**' \
   -v \
   zenunion: /mnt/unionfs
 ExecStop=/bin/fusermount -uz /mnt/unionfs
