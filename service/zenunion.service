@@ -21,6 +21,9 @@ ExecStart=/usr/bin/rclone mount \
   --dir-cache-time=8760h \
   --timeout=10m \
   --tpslimit=1000 \
+  --fast-list \
+  --drive-skip-gdocs \
+  --poll-interval=1m \
   --umask=002 \
   --syslog \
   --exclude 'zd-audiobooks-non-english/**' \
@@ -31,6 +34,10 @@ ExecStart=/usr/bin/rclone mount \
   --exclude 'zd-music0/**' \
   --exclude 'zd-software/**' \
   --exclude 'zd-test/**' \
+  --exclude 'Backups/**' \
+  --exclude 'transcodes/**' \
+  --exclude 'ebooks/**' \
+  --exclude 'magazines/**' \
   -v \
   zenunion: /mnt/unionfs
 ExecStop=/bin/fusermount -uz /mnt/unionfs
