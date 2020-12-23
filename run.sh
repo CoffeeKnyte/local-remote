@@ -1,6 +1,8 @@
 #bin/bash
 
 mkdir -p /mnt/zenstorage
+sudo touch /var/log/rclone-zenstorage.log
+sudo chown seed:seed /var/log/rclone-zenstorage.log
 
 sudo systemctl disable zenunion.service
 sudo systemctl stop zenunion.service
