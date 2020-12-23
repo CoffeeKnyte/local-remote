@@ -8,7 +8,7 @@ Group=seed
 Type=notify
 ExecStartPre=-/usr/bin/sudo /bin/mkdir -p /mnt/zenstorage
 ExecStartPre=-/usr/bin/sudo /bin/chmod -R 775 /mnt/zenstorage
-ExecStartPre=-/usr/bin/sudo /bin/chown -R seed:seed /mnt/zenstorage
+ExecStartPre=-/usr/bin/sudo /bin/chown seed:seed /mnt/zenstorage
 ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/rclone mount \
   --config=/home/seed/.config/rclone/rclone.conf \
@@ -16,6 +16,9 @@ ExecStart=/usr/bin/rclone mount \
   --allow-non-empty \
   --async-read=true \
   --s3-chunk-size=256M \
+  --memory_pool_use_mmap = true \
+  --upload_cutoff = 90M \
+  --upload_concurrency = 16 \
   --rc \
   --rc-addr=localhost:5576 \
   --buffer-size=64M \
