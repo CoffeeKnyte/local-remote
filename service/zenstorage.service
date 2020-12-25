@@ -16,9 +16,6 @@ ExecStart=/usr/bin/rclone mount \
   --allow-non-empty \
   --async-read=true \
   --s3-chunk-size=256M \
-  --memory_pool_use_mmap = true \
-  --upload_cutoff = 90M \
-  --upload_concurrency = 16 \
   --rc \
   --rc-addr=localhost:5576 \
   --buffer-size=64M \
