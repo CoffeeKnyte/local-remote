@@ -44,7 +44,6 @@ sudo chown seed:seed /opt/scripts/zenlocal/primemerger.sh
 sudo systemctl daemon-reload
 sleep 1
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
-/opt/scripts/zenlocal/primemerger.sh
 echo "Finished priming"
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
 sleep 1
