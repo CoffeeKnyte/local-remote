@@ -33,7 +33,7 @@ sudo rm /etc/systemd/system/zenstorage_primer.service
 sudo rm /etc/systemd/system/zenstorage_primer.timer
 sudo rm /etc/systemd/system/mergerfs.service
 
-
+sudo umount /mnt/zenstorage
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
