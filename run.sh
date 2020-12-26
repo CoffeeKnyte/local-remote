@@ -32,6 +32,7 @@ sudo rm /etc/systemd/system/zenstorage.service
 sudo rm /etc/systemd/system/zenstorage_primer.service
 sudo rm /etc/systemd/system/zenstorage_primer.timer
 sudo rm /etc/systemd/system/mergerfs.service
+sudo rm /opt/scripts/zenlocal/primemerger.sh
 
 sudo umount /mnt/zenstorage
 
