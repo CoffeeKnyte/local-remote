@@ -1,6 +1,7 @@
 #bin/bash
 
 mkdir -p /mnt/zenstorage
+mkdir -p /opt/scripts/zenlocal
 sudo touch /var/log/rclone-zenstorage.log
 sudo chown seed:seed /var/log/rclone-zenstorage.log
 
@@ -36,10 +37,14 @@ sudo rm /etc/systemd/system/mergerfs.service
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
+sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/primemerger.sh -P /opt/scripts/zenlocal/
+sudo chmod +x /opt/scripts/zenlocal/primemerger.sh
+sudo chown seed:seed /opt/scripts/zenlocal/primemerger.sh
 
 sudo systemctl daemon-reload
 sleep 1
-sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service 
+sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
+/opt/scripts/zenlocal/primemerger.sh
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
 sleep 1
 #restart all dockers
