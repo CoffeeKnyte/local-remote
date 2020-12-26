@@ -1,8 +1,0 @@
-[Unit]
-Description=Zenstorage Primer - Timer
-
-[Timer]
-OnUnitInactiveSec=8760h
-
-[Install]
-WantedBy=timers.target
