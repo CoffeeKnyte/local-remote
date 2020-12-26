@@ -9,7 +9,6 @@ Type=notify
 ExecStartPre=-/usr/bin/sudo /bin/mkdir -p /mnt/zenstorage
 ExecStartPre=-/usr/bin/sudo /bin/chmod -R 775 /mnt/zenstorage
 ExecStartPre=-/usr/bin/sudo /bin/chown seed:seed /mnt/zenstorage
-ExecStartPre=/usr/bin/find /mnt/unionfs/ -type d -maxdepth 3
 ExecStartPre=/bin/sleep 5
 ExecStart=/usr/bin/rclone mount \
   --config=/home/seed/.config/rclone/rclone.conf \
