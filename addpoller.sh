@@ -8,6 +8,7 @@ sudo chown seed:seed /opt/scripts/zenlocal/zen*
 mkdir -p /opt/scripts/zenlocal/logs
 touch /opt/scripts/zenlocal/logs/poller.log
 
+sudo rm /etc/systemd/system/poller.service
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/poller.service -P /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable poller.service && sudo systemctl restart poller.service
