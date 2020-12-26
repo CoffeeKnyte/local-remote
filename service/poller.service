@@ -2,7 +2,7 @@
 After=docker.service zenstorage.service #edit as necessary to reflect services you need active before the poller starts
 
 [Service]
-ExecStart=/opt/scripts/poller/zenpoller.sh
+ExecStart=/opt/scripts/zenlocal/zenpoller.sh
 ExecStop=/usr/bin/killall zenpoller.sh
 Restart=on-abort
 RestartSec=5
