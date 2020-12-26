@@ -17,7 +17,7 @@ ExecStart=/usr/bin/rclone mount \
   --async-read=true \
   --s3-chunk-size=256M \
   --rc \
-  --rc-addr=localhost:5576 \
+  --rc-addr=localhost:5590 \
   --buffer-size=64M \
   --s3-disable-http2 \
   --attr-timeout=8760h \
