@@ -10,27 +10,7 @@ sudo systemctl stop mergerfs.service
 
 sudo systemctl disable zenstorage.service
 sudo systemctl stop zenstorage.service
-sudo systemctl disable zenstorage_primer.service
-sudo systemctl stop zenstorage_primer.service
-sudo systemctl disable zenstorage_primer.timer
-sudo systemctl stop zenstorage_primer.timer
-
-sudo systemctl disable zenremote.service
-sudo systemctl stop zenremote.service
-sudo systemctl disable zenremote_primer.service
-sudo systemctl stop zenremote_primer.service
-sudo systemctl disable zenremote_primer.timer
-sudo systemctl stop zenremote_primer.timer
-
-sudo systemctl disable zenunion.service
-sudo systemctl stop zenunion.service
-sudo rm /etc/systemd/system/zenunion.service
-sudo rm /etc/systemd/system/zenremote.service
-sudo rm /etc/systemd/system/zenremote_primer.service
-sudo rm /etc/systemd/system/zenremote_primer.timer
 sudo rm /etc/systemd/system/zenstorage.service
-sudo rm /etc/systemd/system/zenstorage_primer.service
-sudo rm /etc/systemd/system/zenstorage_primer.timer
 sudo rm /etc/systemd/system/mergerfs.service
 sudo rm /opt/scripts/zenlocal/primemerger.sh
 
