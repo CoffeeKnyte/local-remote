@@ -20,7 +20,6 @@ ExecStart=/usr/bin/rclone mount \
   --rc-addr=localhost:5590 \
   --buffer-size=256M \
   --s3-disable-http2 \
-  --attr-timeout=8760h \
   --dir-cache-time=8760h \
   --timeout=15s \
   --umask=002 \
