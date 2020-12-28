@@ -3,7 +3,8 @@
 mkdir -p /mnt/zenstorage
 mkdir -p /opt/scripts/zenlocal
 sudo touch /var/log/rclone-zenstorage.log
-sudo chown seed:seed /var/log/rclone-zenstorage.log
+sudo touch /var/log/rclone-inbound.log
+sudo chown seed:seed /var/log/rclone-*.log
 
 sudo systemctl disable mergerfs.service
 sudo systemctl stop mergerfs.service
