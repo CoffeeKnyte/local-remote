@@ -1,0 +1,40 @@
+[Unit]
+Description=ZenInbound Mount
+After=network-online.target
+
+[Service]
+User=seed
+Group=seed
+Type=notify
+ExecStartPre=-/usr/bin/sudo /bin/mkdir -p /mnt/inbound
+ExecStartPre=-/usr/bin/sudo /bin/chmod -R 775 /mnt/inbound
+ExecStartPre=-/usr/bin/sudo /bin/chown seed:seed /mnt/inbound
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/rclone mount \
+  --config=/home/seed/.config/rclone/rclone.conf \
+  --allow-other \
+  --allow-non-empty \
+  --async-read=false \
+  --s3-chunk-size=256M \
+  --rc \
+  --rc-addr=localhost:5590 \
+  --buffer-size=64M \
+  --s3-disable-http2 \
+  --attr-timeout=8760h \
+  --dir-cache-time=8760h \
+  --timeout=10m \
+  --tpslimit=1000 \
+  --umask=002 \
+  --log-file=/var/log/rclone-inbound.log \
+  --exclude 'zd-test/**' \
+  -v \
+  zenstorage:/zd-inbound/inbound/coffee /mnt/inbound
+ExecStop=/bin/fusermount -uz /mnt/inbound
+TimeoutStartSec=900
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=default.target
