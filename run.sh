@@ -17,6 +17,7 @@ sudo rm /opt/scripts/zenlocal/primemerger.sh
 sudo umount /mnt/zenstorage
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
+sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/primemerger.sh -P /opt/scripts/zenlocal/
 sudo chmod +x /opt/scripts/zenlocal/primemerger.sh
@@ -26,6 +27,7 @@ sudo systemctl daemon-reload
 sleep 1
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
 echo "Finished priming"
+sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
 sleep 1
 #restart all dockers
