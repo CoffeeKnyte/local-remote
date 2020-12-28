@@ -16,6 +16,7 @@ sudo rm /etc/systemd/system/mergerfs.service
 sudo rm /opt/scripts/zenlocal/primemerger.sh
 
 sudo umount /mnt/zenstorage
+sudo umount /mnt/inbound
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
