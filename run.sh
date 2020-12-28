@@ -12,6 +12,7 @@ sudo systemctl stop mergerfs.service
 sudo systemctl disable zenstorage.service
 sudo systemctl stop zenstorage.service
 sudo rm /etc/systemd/system/zenstorage.service
+sudo rm /etc/systemd/system/inbound.service
 sudo rm /etc/systemd/system/mergerfs.service
 sudo rm /opt/scripts/zenlocal/primemerger.sh
 
@@ -19,7 +20,7 @@ sudo umount /mnt/zenstorage
 sudo umount /mnt/inbound
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
-#sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
+sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/primemerger.sh -P /opt/scripts/zenlocal/
 sudo chmod +x /opt/scripts/zenlocal/primemerger.sh
