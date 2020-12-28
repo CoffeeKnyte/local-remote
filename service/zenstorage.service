@@ -14,7 +14,7 @@ ExecStart=/usr/bin/rclone mount \
   --config=/home/seed/.config/rclone/rclone.conf \
   --allow-other \
   --allow-non-empty \
-  --async-read=true \
+  --async-read=false \
   --s3-chunk-size=256M \
   --rc \
   --rc-addr=localhost:5590 \
@@ -23,7 +23,8 @@ ExecStart=/usr/bin/rclone mount \
   --attr-timeout=8760h \
   --dir-cache-time=8760h \
   --timeout=10m \
-  --tpslimit=1000 \
+  --tpslimit=500 \
+  --tpslimit-burst=1000 \
   --umask=002 \
   --log-file=/var/log/rclone-zenstorage.log \
   --exclude 'zd-audiobooks-non-english/**' \
