@@ -18,13 +18,11 @@ ExecStart=/usr/bin/rclone mount \
   --s3-chunk-size=256M \
   --rc \
   --rc-addr=localhost:5590 \
-  --buffer-size=64M \
+  --buffer-size=256M \
   --s3-disable-http2 \
   --attr-timeout=8760h \
   --dir-cache-time=8760h \
-  --timeout=10m \
-  --tpslimit=500 \
-  --tpslimit-burst=1000 \
+  --timeout=15s \
   --umask=002 \
   --log-file=/var/log/rclone-zenstorage.log \
   --exclude 'zd-audiobooks-non-english/**' \
