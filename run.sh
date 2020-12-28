@@ -29,7 +29,7 @@ sudo systemctl daemon-reload
 sleep 1
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
 echo "Finished priming"
-#sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
+sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
 sleep 1
 #restart all dockers
