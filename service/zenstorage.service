@@ -21,6 +21,7 @@ ExecStart=/usr/bin/rclone mount \
   --buffer-size=256M \
   --s3-disable-http2 \
   --dir-cache-time=8760h \
+  --attr-timeout=6000h \
   --timeout=15s \
   --umask=002 \
   --log-file=/var/log/rclone-zenstorage.log \
