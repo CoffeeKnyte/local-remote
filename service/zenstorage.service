@@ -36,7 +36,7 @@ ExecStart=/usr/bin/rclone mount \
   -v \
   zenstorage: /mnt/zenstorage
 ExecStop=/bin/fusermount -uz /mnt/zenstorage
-#ExecStartPost=/opt/scripts/zenlocal/primemerger.sh
+ExecStartPost=/opt/scripts/zenlocal/primemerger.sh
 TimeoutStartSec=900
 Restart=on-abort
 RestartSec=5
