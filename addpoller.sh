@@ -1,4 +1,5 @@
 sudo mv /opt/scripts/zenlocal/zenlocalpoller /opt/scripts/zenlocal/zenlocalpoller.old 
+sudo mv /opt/scripts/zenlocal/zenpoller.sh /opt/scripts/zenlocal/zenpoller.sh.old 
 sudo wget https://raw.githubusercontent.com/zenjabba/ZenDRIVE-Poller-Binary/main/zenlocalpoller -P /opt/scripts/zenlocal/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenpoller.sh -P /opt/scripts/zenlocal/
 sudo chmod +x /opt/scripts/zenlocal/zen*
