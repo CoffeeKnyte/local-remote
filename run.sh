@@ -6,6 +6,11 @@ sudo touch /var/log/rclone-zenstorage.log
 sudo touch /var/log/rclone-inbound.log
 sudo chown seed:seed /var/log/rclone-*.log
 
+kill $(pidof rclone)
+sudo umount /mnt/unionfs
+sudo umount /mnt/zenstorage
+sudo umount /mnt/inbound
+
 sudo systemctl disable mergerfs.service
 sudo systemctl stop mergerfs.service
 
@@ -16,8 +21,6 @@ sudo rm /etc/systemd/system/inbound.service
 sudo rm /etc/systemd/system/mergerfs.service
 sudo rm /opt/scripts/zenlocal/primemerger.sh
 
-sudo umount /mnt/zenstorage
-sudo umount /mnt/inbound
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
