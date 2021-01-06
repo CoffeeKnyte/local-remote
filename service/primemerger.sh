@@ -10,5 +10,6 @@ find /mnt/zenstorage/zd-tv1  -type d -maxdepth 3 &
 find /mnt/zenstorage/zd-tv2  -type d -maxdepth 3 &
 find /mnt/zenstorage/zd-tv3  -type d -maxdepth 3 &
 find /mnt/zenstorage/zd-tv-non-english  -type d -maxdepth 3 &
+find /mnt/inbound  -type d -maxdepth 3 &
 # we need to wait till it's all done before we hand back control
 wait
