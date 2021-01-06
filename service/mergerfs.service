@@ -22,7 +22,7 @@ ExecStart=/usr/bin/mergerfs \
   -o category.create=ff,async_read=false,cache.files=partial \
   -o dropcacheonclose=true,use_ino,minfreespace=0 \
   -o xattr=nosys,statfs_ignore=ro,allow_other,umask=002,noatime \
-  /mnt/local=RW:/mnt/inbound=RO:/mnt/zenstorage/zd-*=RO /mnt/unionfs
+  /mnt/local=RW:mnt/zenstorage/zd-*=RO /mnt/unionfs
 ExecStop=/bin/fusermount -u /mnt/unionfs
 
 [Install]
