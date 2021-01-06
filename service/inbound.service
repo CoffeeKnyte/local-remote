@@ -29,7 +29,7 @@ ExecStart=/usr/bin/rclone mount \
   --log-file=/var/log/rclone-inbound.log \
   --exclude 'zd-test/**' \
   -v \
-  zenstorage:/zd-inbound/inbound/coffee /mnt/inbound
+  zenstorage:/zd-inbound/inbound /mnt/inbound
 ExecStop=/bin/fusermount -uz /mnt/inbound
 TimeoutStartSec=900
 Restart=on-abort
