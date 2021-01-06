@@ -12,8 +12,8 @@
 [Unit]
 Description=MergerFS Mount
 After=network-online.target
-Requires=zenstorage.service inbound.service rclone_vfs.service
-After=zenstorage.service inbound.service rclone_vfs.service
+Requires=zenstorage.service rclone_vfs.service
+After=zenstorage.service rclone_vfs.service
 
 [Service]
 Type=forking
