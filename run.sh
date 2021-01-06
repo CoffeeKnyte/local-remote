@@ -13,9 +13,11 @@ sudo umount /mnt/inbound
 
 sudo systemctl disable mergerfs.service
 sudo systemctl stop mergerfs.service
-
 sudo systemctl disable zenstorage.service
 sudo systemctl stop zenstorage.service
+sudo systemctl disable inbound.service
+sudo systemctl stop inbound.service
+
 sudo rm /etc/systemd/system/zenstorage.service
 sudo rm /etc/systemd/system/inbound.service
 sudo rm /etc/systemd/system/mergerfs.service
@@ -31,9 +33,9 @@ sudo chown seed:seed /opt/scripts/zenlocal/primemerger.sh
 
 sudo systemctl daemon-reload
 sleep 1
+sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
 echo "Finished priming"
-sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
 sleep 1
 #restart all dockers
