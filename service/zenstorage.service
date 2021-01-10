@@ -29,7 +29,6 @@ ExecStart=/usr/bin/rclone mount \
   --exclude 'zd-audiobooks-non-english/**' \
   --exclude 'zd-comics/**' \
   --exclude 'zd-ebooks/**' \
-  --exclude 'zd-inbound/**' \
   --exclude 'zd-ebooks-non-english/**' \
   --exclude 'zd-magazines/**' \
   --exclude 'zd-music0/**' \
