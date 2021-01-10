@@ -9,7 +9,7 @@ sudo chown seed:seed /var/log/rclone-*.log
 kill $(pidof rclone)
 sudo umount /mnt/unionfs
 sudo umount /mnt/zenstorage
-sudo umount /mnt/inbound
+#sudo umount /mnt/inbound
 
 sudo systemctl disable mergerfs.service
 sudo systemctl stop mergerfs.service
@@ -25,15 +25,15 @@ sudo rm /opt/scripts/zenlocal/primemerger.sh
 
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
-sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
+#sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/inbound.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
-sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/primemerger.sh -P /opt/scripts/zenlocal/
-sudo chmod +x /opt/scripts/zenlocal/primemerger.sh
-sudo chown seed:seed /opt/scripts/zenlocal/primemerger.sh
+sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/warmup.sh -P /opt/scripts/zenlocal/
+sudo chmod +x /opt/scripts/zenlocal/warmup.sh
+sudo chown seed:seed /opt/scripts/zenlocal/warmup.sh
 
 sudo systemctl daemon-reload
 sleep 1
-sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
+#sudo systemctl enable inbound.service && sudo systemctl restart inbound.service
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
 echo "Finished priming"
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
