@@ -15,16 +15,19 @@ ExecStart=/usr/bin/rclone mount \
   --allow-other \
   --allow-non-empty \
   --async-read=false \
-  --s3-chunk-size=256M \
+  --s3-disable-http2 \
   --rc \
   --rc-no-auth \
   --rc-addr=localhost:5590 \
-  --buffer-size=256M \
-  --s3-disable-http2 \
+  --vfs-read-chunk-size=64M \
+  --vfs-read-chunk-size-limit=off \
+  --buffer-size=64M \
   --dir-cache-time=6000h \
-  --attr-timeout=6000h \
-  --timeout=20m \
+  --attr-timeout=0 \
+  --timeout=10m \
   --umask=002 \
+  --no-checksum \
+  --s3-chunk-size=256M \
   --log-file=/var/log/rclone-zenstorage.log \
   --exclude 'zd-audiobooks-non-english/**' \
   --exclude 'zd-comics/**' \
