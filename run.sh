@@ -13,6 +13,7 @@ sudo umount /mnt/zenstorage-small
 sudo umount /mnt/zenstorage-metadata
 
 sudo systemctl stop zenstorag*.service
+sudo systemctl disable zenstorag*.service
 
 sudo rm /etc/systemd/system/zenstorag*.service
 sudo rm /etc/systemd/system/mergerfs.service
