@@ -1,0 +1,47 @@
+[Unit]
+Description=ZenStorage-small Mount
+After=network-online.target
+
+[Service]
+User=seed
+Group=seed
+Type=notify
+ExecStartPre=-/usr/bin/sudo /bin/mkdir -p /mnt/zenstorage-small
+ExecStartPre=-/usr/bin/sudo /bin/chmod -R 775 /mnt/zenstorage-small
+ExecStartPre=-/usr/bin/sudo /bin/chown seed:seed /mnt/zenstorage-small
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/rclone mount \
+  --config=/home/seed/.config/rclone/rclone.conf \
+  --allow-other \
+  --allow-non-empty \
+  --async-read=false \
+  --s3-disable-http2 \
+  --rc \
+  --rc-no-auth \
+  --rc-addr=localhost:5590 \
+  --vfs-read-chunk-size=64M \
+  --vfs-read-chunk-size-limit=off \
+  --buffer-size=64M \
+  --dir-cache-time=6000h \
+  --attr-timeout=0 \
+  --timeout=10m \
+  --umask=002 \
+  --no-checksum \
+  --s3-chunk-size=256M \
+  --log-file=/var/log/rclone-zenstorage-small.log \
+  --exclude 'zd-audiobooks-non-english/**' \
+  --exclude 'zd-ebooks-non-english/**' \
+  --exclude 'zd-magazines/**' \
+  --exclude 'zd-music0/**' \
+  --exclude 'zd-software/**' \
+  --exclude 'zd-test/**' \
+  -v \
+  zenstorage-small: /mnt/zenstorage-small
+ExecStop=/bin/fusermount -uz /mnt/zenstorage-small
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=default.target
