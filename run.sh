@@ -12,10 +12,16 @@ sudo umount /mnt/zenstorage
 sudo umount /mnt/zenstorage-small
 sudo umount /mnt/zenstorage-metadata
 
-sudo systemctl stop zenstorag*.service
-sudo systemctl disable zenstorag*.service
+sudo systemctl stop zenstorage.service
+sudo systemctl disable zenstorage.service
+sudo systemctl stop zenstorage-small.service
+sudo systemctl disable zenstorage-small.service
+sudo systemctl stop zenstorage-metadata.service
+sudo systemctl disable zenstorage-metadata.service
 
-sudo rm /etc/systemd/system/zenstorag*.service
+sudo rm /etc/systemd/system/zenstorage.service
+sudo rm /etc/systemd/system/zenstorage-small.service
+sudo rm /etc/systemd/system/zenstorage-metadata.service
 sudo rm /etc/systemd/system/mergerfs.service
 sudo rm /opt/scripts/zenlocal/warmup.sh
 
