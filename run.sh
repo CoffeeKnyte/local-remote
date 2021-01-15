@@ -39,8 +39,8 @@ sudo systemctl daemon-reload
 sleep 1
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
 echo "Finished priming"
-sudo systemctl enable zenstorage-small.service && sudo systemctl restart zenstorage-small.service
-sudo systemctl enable zenstorage-metadata.service && sudo systemctl restart zenstorage-metadata.service
+#sudo systemctl enable zenstorage-small.service && sudo systemctl restart zenstorage-small.service
+#sudo systemctl enable zenstorage-metadata.service && sudo systemctl restart zenstorage-metadata.service
 sudo rm -rf /mnt/unionfs/Media
 sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
 sleep 1
