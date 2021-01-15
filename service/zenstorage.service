@@ -41,7 +41,7 @@ ExecStart=/usr/bin/rclone mount \
   zenstorage: /mnt/zenstorage
 ExecStop=/bin/fusermount -uz /mnt/zenstorage
 ExecStartPost=/opt/scripts/zenlocal/warmup.sh
-TimeoutStartSec=900
+TimeoutStartSec=1200
 Restart=on-abort
 RestartSec=5
 StartLimitInterval=60s
