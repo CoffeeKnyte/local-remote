@@ -27,8 +27,8 @@ sudo rm /opt/scripts/zenlocal/warmup.sh
 
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage.service -P /etc/systemd/system/
-sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage-small.service -P /etc/systemd/system/
-sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage-metadata.service -P /etc/systemd/system/
+#sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage-small.service -P /etc/systemd/system/
+#sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/zenstorage-metadata.service -P /etc/systemd/system/
 
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/mergerfs.service -P /etc/systemd/system/
 sudo wget https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/service/warmup.sh -P /opt/scripts/zenlocal/
