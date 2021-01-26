@@ -27,6 +27,7 @@ ExecStart=/usr/bin/rclone mount \
   --timeout=10m \
   --umask=002 \
   --no-checksum \
+  --no_check_bucket=true \
   --s3-chunk-size=256M \
   --s3-memory-pool-use-mmap=true \
   --s3-upload-cutoff=256M \
