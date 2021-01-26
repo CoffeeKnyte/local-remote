@@ -28,7 +28,10 @@ ExecStart=/usr/bin/rclone mount \
   --umask=002 \
   --no-checksum \
   --s3-chunk-size=256M \
-  --log-file=/var/log/rclone-zenstorage-metadata.log \
+  --s3-memory-pool-use-mmap=true \
+  --s3-upload-cutoff=256M \
+  --s3-upload-concurrency=16 \
+  --syslog \
   -v \
   zenstorage-metadata: /mnt/zenstorage-metadata
 ExecStop=/bin/fusermount -uz /mnt/zenstorage-metadata
