@@ -12,6 +12,7 @@ sudo umount /mnt/zenstorage
 sudo umount /mnt/zenstorage-small
 sudo umount /mnt/zenstorage-metadata
 docker stop plex
+docker stop plex2
 
 sudo systemctl stop zenstorage.service
 sudo systemctl disable zenstorage.service
@@ -51,3 +52,4 @@ sudo systemctl enable poller.service && sudo systemctl restart poller.service
 #restart all dockers
 docker restart $(docker ps -q)
 docker start plex
+docker start plex2
