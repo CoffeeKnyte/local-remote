@@ -28,7 +28,11 @@ ExecStart=/usr/bin/rclone mount \
   --umask=002 \
   --no-checksum \
   --s3-chunk-size=256M \
-  --log-file=/var/log/rclone-zenstorage.log \
+  --s3-memory-pool-use-mmap=true \
+  --s3-upload-cutoff=256M \
+  --s3-upload-concurrency=16 \
+  --syslog \
+  --exclude 'zd-audiobooks/**' \
   --exclude 'zd-audiobooks-non-english/**' \
   --exclude 'zd-comics/**' \
   --exclude 'zd-ebooks/**' \
