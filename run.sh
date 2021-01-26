@@ -46,7 +46,10 @@ sudo systemctl enable zenstorage-metadata.service && sudo systemctl restart zens
 sudo systemctl enable zenstorage.service && sudo systemctl restart zenstorage.service
 echo "Finished priming"
 sudo rm -rf /mnt/unionfs/Media
-sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service 
+sudo systemctl enable mergerfs.service && sudo systemctl restart mergerfs.service
+systemctl restart asian.service
+systemctl restart rclone_vfs.service
+systemctl restart restart rclone_vfs_primer.service
 sleep 1
 sudo systemctl enable poller.service && sudo systemctl restart poller.service
 #restart all dockers
