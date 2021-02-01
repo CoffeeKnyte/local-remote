@@ -1,5 +1,6 @@
 #!/bin/bash
 # This pre-primes the ZenDRIVE mergerfs for instant startup of Plex
+find /mnt/zenstorage-metadata  -type d -maxdepth 4 &
 find /mnt/zenstorage/zd-anime  -type d -maxdepth 3 &
 find /mnt/zenstorage-small/zd-audiobooks  -type d -maxdepth 3 &
 find /mnt/zenstorage/zd-courses  -type d -maxdepth 3 &
