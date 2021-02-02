@@ -1,6 +1,7 @@
 [Unit]
 Description=ZenStorage Mount
-After=network-online.target
+After=network-online.target zenstorage-small.service zenstorage-metadata.service
+Requires=zenstorage-small.service zenstorage-metadata.service
 
 [Service]
 User=seed
@@ -23,13 +24,10 @@ ExecStart=/usr/bin/rclone mount \
   --vfs-read-chunk-size-limit=off \
   --buffer-size=64M \
   --dir-cache-time=6000h \
+  --attr-timeout=1m \
   --timeout=10m \
   --umask=002 \
   --no-checksum \
-  --s3-chunk-size=256M \
-  --s3-memory-pool-use-mmap=true \
-  --s3-upload-cutoff=256M \
-  --s3-upload-concurrency=16 \
   --syslog \
   --exclude 'zd-audiobooks/**' \
   --exclude 'zd-audiobooks-non-english/**' \
