@@ -7,7 +7,7 @@
 # run it once as sudo and it should add the new google IPs to /etc/hosts
 # should not need to restart after
 #
-# run `wget -q -O- https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/echo_google_hosts.sh | sudo bash`
+# run: wget -q -O- https://raw.githubusercontent.com/CoffeeKnyte/local-remote/main/echo_google_hosts.sh | sudo bash
 # 
 
 echo "142.250.189.170 www.googleapis.com" >> /etc/hosts
